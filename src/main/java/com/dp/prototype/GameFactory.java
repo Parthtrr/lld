@@ -1,6 +1,6 @@
 package com.dp.prototype;
 
-import com.lm10.lld.tictactoe.tictacttoe1.dto.Game;
+
 
 public class GameFactory {
   public GraphicalObject getPrototype(String type) {
