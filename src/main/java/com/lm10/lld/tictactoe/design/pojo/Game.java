@@ -6,11 +6,19 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 public abstract class Game {
   public Board board;
   public Player[] players;
+  public Game(Board board, Player[] players) {
+    this.board = board;
+    this.players = players;
+    for(int i=0;i< board.getLength(); i++){
+      for(int j=0;j< board.getWidth(); j++){
+        board.getBoard()[i][j] = Cell.builder().x(i).y(j).input(Input.EMPTY).build();
+      }
+    }
+  }
   public abstract void makeMove(Board board, Cell cell);
-  public abstract Player getWinner(Board board);
-  public abstract Player whoWillMakeMove(Player[] players, int previous);
+  public abstract Input getWinner(Board board);
+  public abstract Player whoWillMakeMove(Player[] players, Player previous);
 }
